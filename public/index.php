@@ -1,3 +1,12 @@
+<?
+session_start();
+session_regenerate_id();
+
+if(isset($_SESSION['userauth'])) {
+	header("Location: main.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
