@@ -1,16 +1,29 @@
+Parse.initialize("9syVLvZdcJKZD9uAlCoYMKwjtmWxPHFhD4DdYKcN", "HH4p0QrjdzsO74KsoLhhhUZnPYDwExnZ8o9CCAeN"); 
 
-Parse.initialize("9syVLvZdcJKZD9uAlCoYMKwjtmWxPHFhD4DdYKcN", "HH4p0QrjdzsO74KsoLhhhUZnPYDwExnZ8o9CCAeN");
-
-var TestObject = Parse.Object.extend("TestObject");
-var testObject = new TestObject();
-  testObject.save({foo: "bar"}, {
-  success: function(object) {
-    console.log("Success")
-  },
-  error: function(model, error) {
-    console.log("Fail")
-  }
-});
+function storeData()
+{
+    event.preventDefault();
+    var user = new Parse.User();
+    user.set("username", document.signupform.username.value);
+    user.set("password", document.signupform.password.value);
+    user.set("email", document.signupform.email.value);
+    user.set("firstName", document.signupform.firstname.value);
+    user.set("lastName", document.signupform.lastname.value);
+    user.set("securityAnswer", document.signupform.security_answer.value);
+      
+    // other fields can be set just like with Parse.Object
+    //user.set("phone", "650-555-0000");
+      
+    user.signUp(null, {
+      success: function(user) {
+        document.signupform.submit();
+      },
+      error: function(user, error) {
+        // Show the error message somewhere and let the user try again.
+        alert("Error: " + error.code + " " + error.message);
+      }
+    });
+}
 
 function checkEmptyFields()
 {
@@ -180,6 +193,8 @@ function validation()
     // this function is used to verify the password
     if (passwordVerify() == false)
         return false;
+
+    storeData();
      
     return true;
 }
