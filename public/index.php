@@ -61,10 +61,22 @@ if(isset($_SESSION['userauth'])) {
                     <li class="page-scroll">
                         <a href="signup.php">Create account</a>
                     </li>
-                    <li class="page-scroll">
-                        <a href="">Sign in</a>
-                    </li>
-                    
+                    <!-- ############################# S I G N   I N ######################## -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sign In <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <form class="login" id="login">
+                                <input type="text" id="login-username" placeholder="Username" class="form-control"> <!-- enter username -->
+                                <input type="password" id="login-password" placeholder="Password" class="form-control"> <!-- enter password -->
+                                <input type="submit" id="login-submit" class="btn btn-success btn-lg">
+                            </form>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Current User</li>
+                            <div id="current-user"></div> <!-- list the current user or none -->
+                            <button id="logout" type="submit" class="btn btn-success btn-lg">LogOut</button>
+                        </ul>
+                     </li>
+                     <!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^ S I G N   I N ^^^^^^^^^^^^^^^^^^^^^^^^^ -->
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -444,7 +456,13 @@ if(isset($_SESSION['userauth'])) {
 
     <!-- Custom Theme JavaScript -->
     <script src="js/freelancer.js"></script>
-
+	
+    <!-- Parse -->
+    <script src = "http://www.parsecdn.com/js/parse-latest.js"></script>
+    
+    <!-- Sign In JavaScript -->
+    <script src="js/login.js"></script>
+    
 </body>
 
 </html>
