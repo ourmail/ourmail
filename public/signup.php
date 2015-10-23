@@ -13,7 +13,7 @@ if(isset($_SESSION['userauth'])) {
 	<title>Sign up for OurMail!</title>
 	<script src = "http://www.parsecdn.com/js/parse-latest.js"></script>
 	<link rel = "stylesheet" type = "text/css" href = "css/signup.css">
-	<link href='https://fonts.googleapis.com/css?family=Itim' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Cabin:500' rel='stylesheet' type='text/css'>
     <script src = "js/signup_script.js"></script>
 </head>
 

@@ -1,12 +1,7 @@
-body
-{
-	/*background-color: DodgerBlue;*/
-}
-
 #header 
 {
 	background-color: DeepSkyBlue;
-	font-family: "Itim", Arial;
+	font-family: "Cabin", Arial;
 	text-align: center;
 	padding: 10px;
 	border-radius: 10px;
@@ -15,10 +10,10 @@ body
 
 #sidetext
 {
-	font-family: "Itim", Arial;
+	font-family: "Cabin", Arial;
 	font-size: 35px;
 	position: relative;
-	left: 120px;
+	left: 130px;
 	top: 60px;
 }
 
@@ -64,7 +59,7 @@ form
 	bottom: 550px;
 	float: right;
 	margin-right: 2cm;
-	font-family: 'Itim', Arial;
+	font-family: 'Cabin', Arial;
 	font-size: 20px;
 	background-color: #E0E0E0;
 	padding: 25px 25px 25px 25px;
