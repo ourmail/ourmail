@@ -12,7 +12,7 @@ if(isset($_SESSION['userauth'])) {
 <head>
 	<title>Sign up for OurMail!</title>
 	<script src = "http://www.parsecdn.com/js/parse-latest.js"></script>
-	<link rel = "stylesheet" type = "text/css" href = "signup.css">
+	<link rel = "stylesheet" type = "text/css" href = "css/signup.css">
 	<link href='https://fonts.googleapis.com/css?family=Itim' rel='stylesheet' type='text/css'>
     <script src = "js/signup_script.js"></script>
 </head>
@@ -26,10 +26,10 @@ if(isset($_SESSION['userauth'])) {
 	<div>
 	<p id = "sidetext">The power of email all in a single account.</p>
 
-	<img id = "ioslogo" src="ios.png" alt = "IOS Mail Logo"> -->
-	<img id = "gmaillogo" src="gmail.png" alt = "Gmail Logo">
-	<img id = "yahoologo" src="yahoo.png" alt = "Yahoo Mail Logo">
-	<img id = "outlooklogo" src="outlook.jpg" alt = "Outlook Logo"> 
+	<img id = "ioslogo" src="img/signuplogos/ios.png" alt = "IOS Mail Logo"> -->
+	<img id = "gmaillogo" src="img/signuplogos/gmail.png" alt = "Gmail Logo">
+	<img id = "yahoologo" src="img/signuplogos/yahoo.png" alt = "Yahoo Mail Logo">
+	<img id = "outlooklogo" src="img/signuplogos/outlook.jpg" alt = "Outlook Logo"> 
 	</div>
 
 	<form name = "signupform" onsubmit = "return(validation());" >
@@ -62,3 +62,8 @@ if(isset($_SESSION['userauth'])) {
 
 </body>
 </html>
+
+
+
+
+

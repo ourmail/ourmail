@@ -1,3 +1,8 @@
+body
+{
+	/*background-color: DodgerBlue;*/
+}
+
 #header 
 {
 	background-color: DeepSkyBlue;
@@ -89,4 +94,7 @@ form
 	width: 70px;
 	height: 30px;
 }
+
+
+
 
