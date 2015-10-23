@@ -63,17 +63,17 @@ if(isset($_SESSION['userauth'])) {
                     </li>
                     <!-- ############################# S I G N   I N ######################## -->
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sign In <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Log In <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <form class="login" id="login">
                                 <input type="text" id="login-username" placeholder="Username" class="form-control"> <!-- enter username -->
                                 <input type="password" id="login-password" placeholder="Password" class="form-control"> <!-- enter password -->								
-                                <input type="submit" id="login-submit" class="btn btn-success btn-lg">
+                                <input type="submit" id="login-submit" class="btn btn-success btn-lg" value="Log In">
                             </form>
-                            <li role="separator" class="divider"></li>
-                            <li class="dropdown-header">Current User</li>
-                            <div id="current-user"></div> <!-- list the current user or none -->
-                            <button id="logout" type="submit" class="btn btn-success btn-lg">LogOut</button>
+                            <!--<li role="separator" class="divider"></li>-->
+                            <!--<li class="dropdown-header">Current User</li>
+                            <div id="current-user"></div>--> <!-- list the current user or none -->
+                            <!--<button id="logout" type="submit" class="btn btn-success btn-lg">LogOut</button>-->
                         </ul>
                      </li>
                      <!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^ S I G N   I N ^^^^^^^^^^^^^^^^^^^^^^^^^ -->
