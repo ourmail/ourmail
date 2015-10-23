@@ -35,6 +35,11 @@ $(function() {
 		Parse.User.logIn(username, password, {
 			success: function(user) { //on success, user object is pass back to me
 				console.log("login success.");
+				$.post('login.php', {'authentication' : true}, function(data) {
+					if(data.success == true) {
+						location.reload(true);
+					}					
+				}, 'json');
 				displayCurrentUser();
 			},
 			error: function(user, error) {

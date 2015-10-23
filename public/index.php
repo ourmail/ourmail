@@ -67,7 +67,7 @@ if(isset($_SESSION['userauth'])) {
                         <ul class="dropdown-menu">
                             <form class="login" id="login">
                                 <input type="text" id="login-username" placeholder="Username" class="form-control"> <!-- enter username -->
-                                <input type="password" id="login-password" placeholder="Password" class="form-control"> <!-- enter password -->
+                                <input type="password" id="login-password" placeholder="Password" class="form-control"> <!-- enter password -->								
                                 <input type="submit" id="login-submit" class="btn btn-success btn-lg">
                             </form>
                             <li role="separator" class="divider"></li>
