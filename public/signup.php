@@ -12,8 +12,19 @@ if(isset($_SESSION['userauth'])) {
 <head>
 	<title>Sign up for OurMail!</title>
 	<script src = "http://www.parsecdn.com/js/parse-latest.js"></script>
+
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/landing.css" rel="stylesheet">
+
 	<link rel = "stylesheet" type = "text/css" href = "css/signup.css">
+<<<<<<< Updated upstream
 	<link href='https://fonts.googleapis.com/css?family=Cabin:500' rel='stylesheet' type='text/css'>
+=======
+
+	<link href='https://fonts.googleapis.com/css?family=Itim' rel='stylesheet' type='text/css'>
+
+>>>>>>> Stashed changes
     <script src = "js/signup_script.js"></script>
 </head>
 
@@ -25,7 +36,6 @@ if(isset($_SESSION['userauth'])) {
 
 	<div>
 	<p id = "sidetext">The power of email all in a single account.</p>
-
 	<img id = "ioslogo" src="img/signuplogos/ios.png" alt = "IOS Mail Logo"> -->
 	<img id = "gmaillogo" src="img/signuplogos/gmail.png" alt = "Gmail Logo">
 	<img id = "yahoologo" src="img/signuplogos/yahoo.png" alt = "Yahoo Mail Logo">
