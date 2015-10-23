@@ -93,7 +93,7 @@ if(isset($_SESSION['userauth'])) {
                     <div class="intro-text">
                         <span class="name">Start Ourmail</span>
                         <hr class="star-light">
-                        <span class="skills">Faster - Free - Friendly</span>
+                        <span class="skills">Fast - Free - Friendly</span>
                     </div>
                 </div>
             </div>
@@ -201,7 +201,7 @@ if(isset($_SESSION['userauth'])) {
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Contact Me</h2>
+                    <h2>Contact</h2>
                     <hr class="star-primary">
                 </div>
             </div>

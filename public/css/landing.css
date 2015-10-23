@@ -464,3 +464,24 @@ footer .footer-below {
     background-color: #5AB5FF !important;
     border-color: #5AB5FF !important;
 }
+.dropdown-menu{
+    width:280px;
+}
+.dropdown-menu input{
+    margin-bottom: 5px;
+    border: aliceblue;
+}
+.dropdown-menu button{
+    position: relative;
+    left: 35%;
+}
+#login-submit{
+    position: relative;
+    left: 35%;
+}
+.dropdown-header{
+    padding-left: 10px;
+}
+#current-user{
+    padding-left: 10px;
+}
