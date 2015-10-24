@@ -18,13 +18,11 @@ if(isset($_SESSION['userauth'])) {
     <link href="css/landing.css" rel="stylesheet">
 
 	<link rel = "stylesheet" type = "text/css" href = "css/signup.css">
-<<<<<<< Updated upstream
+
 	<link href='https://fonts.googleapis.com/css?family=Cabin:500' rel='stylesheet' type='text/css'>
-=======
-
-	<link href='https://fonts.googleapis.com/css?family=Itim' rel='stylesheet' type='text/css'>
-
->>>>>>> Stashed changes
+ 
+    <link href='https://fonts.googleapis.com/css?family=Itim' rel='stylesheet' type='text/css'>
+    
     <script src = "js/signup_script.js"></script>
 </head>
 
