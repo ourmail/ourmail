@@ -12,9 +12,10 @@
 {
 	font-family: "Cabin", Arial;
 	font-size: 35px;
-	position: relative;
-	left: 130px;
-	top: 60px;
+	height: 100px;
+	position:relative;
+	left:15%;
+	
 }
 
 #ioslogo
@@ -55,8 +56,6 @@
 
 form
 {
-	position: relative;
-	bottom: 550px;
 	float: right;
 	margin-right: 2cm;
 	font-family: 'Cabin', Arial;
@@ -90,6 +89,11 @@ form
 	height: 30px;
 }
 
+.Signup{
+	position: absolute;
+    /* position: relative; */
+    left: 35%;
+}
 
 
 
