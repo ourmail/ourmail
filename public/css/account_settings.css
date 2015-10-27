@@ -1,13 +1,40 @@
-.button
+#uname
 {
 	
 	width: 300px;
 	padding: 20px;
 	font-weight: bold;
 	font-size: 150%;
-	background: DeepSkyBlue;
+	background: #0066FF;
 	color: #FFFFFF;
 	cursor: pointer;
 	border: 1px solid #999999;
 	border-radius: 10px;
+
+	position: fixed;
+	right: 50px;
+	top:250px;
+}
+
+#password
+{
+	width: 300px;
+	padding: 20px;
+	font-weight: bold;
+	font-size: 150%;
+	background: #0066FF;
+	color: #FFFFFF;
+	cursor: pointer;
+	border: 1px solid #999999;
+	border-radius: 10px;
+
+	position:relative;
+	right: 50px;
+	top: 200px;
+}
+
+body
+{
+	background-color: #D8D8D8;
+
 }

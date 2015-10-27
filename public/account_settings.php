@@ -12,13 +12,13 @@
 <body>
 
 	<form action = "change_pass.php">
-		<input class = "button" type = "submit" value = "Change Username">
+		<input id = "uname" type = "submit" value = "Change Username">
 	</form>
 
 	<br>   
 
 	<form action = "change_pass.php">
-		<input class = "button" type = "submit" value = "Change Password">
+		<input id = "password" type = "submit" value = "Change Password">
 	</form>
 
 	
