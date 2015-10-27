@@ -11,7 +11,7 @@
 
 <body>
 
-	<form action = "change_pass.php">
+	<form action = "newUsername.php">
 		<input id = "uname" type = "submit" value = "Change Username">
 	</form>
 
