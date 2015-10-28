@@ -11,8 +11,8 @@ if(isset($_SESSION['userauth'])) {
 
 <head>
 	<title>Sign up for OurMail!</title>
-	<script src = "http://www.parsecdn.com/js/parse-latest.js"></script>
-
+	<script src = "http://www.parsecdn.com/js/parse-latest.js"></script> <!-- Parse Script -->
+	<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script> <!-- jQuery Script -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 
     <link href="css/landing.css" rel="stylesheet">
@@ -55,6 +55,18 @@ if(isset($_SESSION['userauth'])) {
 					 </div>
 				</div>			
 		</div>
+		<!-- *********************** N E W   S I G N U P   C O D E ************************* -->
+		<form id="signup">
+			<h1>Sign Up</h1>
+			<input type="text" id="signupFirstname" placeholder="Firstname" class="form-control">
+			<input type="text" id="signupLastname" placeholder="Lastname" class="form-control">
+			<input type="text" id="signupUsername" placeholder="Username" class="form-control">
+			<input type="password" id="signupPassword" placeholder="Password" class="form-control">
+			<input type="text" id="signupEmail" placeholder="Email" class="form-control">
+			<input type="submit" id="signupSubmit">
+		</form>
+		<!-- ************************************************************************************** -->
+		<!-- *************************** O L D   S I G N U P   C O D E  ***************************
 		<div class="Signup">
 				<form name = "signupform" onsubmit = "return(validation());" >
 					Name:<br>
@@ -82,6 +94,7 @@ if(isset($_SESSION['userauth'])) {
 					<input id = "submit" type="submit">
 				</form>
 		</div>
+		//-->
 	</div>
 </body>
 </html>

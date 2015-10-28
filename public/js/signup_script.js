@@ -1,5 +1,35 @@
-Parse.initialize("9syVLvZdcJKZD9uAlCoYMKwjtmWxPHFhD4DdYKcN", "HH4p0QrjdzsO74KsoLhhhUZnPYDwExnZ8o9CCAeN"); 
+$(function() {
+	// ************** I N I T I A L I Z E *******************
+	"use strict"
+	Parse.$ = jQuery;
+	Parse.initialize("9syVLvZdcJKZD9uAlCoYMKwjtmWxPHFhD4DdYKcN", "HH4p0QrjdzsO74KsoLhhhUZnPYDwExnZ8o9CCAeN"); 
+	// ******************** S I G U P ************************
+	$("#signup").submit(function(event){
+		event.preventDefault();
+		var newUser = new Parse.User();
+		newUser.set("firstName", $("#signupFirstname").val());
+		newUser.set("lastName", $("#signupLastname").val());
+		newUser.set("username", $("#signupUsername").val());
+		newUser.set("password", $("#signupPassword").val());
+		newUser.set("email", $("#signupEmail").val());
+		newUser.signUp(null, {
+			success: function(newUser) {
+				console.log("signup good");
+			},
+			error: function(newUser, error) {
+				console.log("signuperror:"+error.message);
+				alert("Parse Error(" + error.code + "): " + error.message);
+			}
+		});
+	});
 
+
+// NO CODE PASS THIS POINT
+// ADD CODE IN $(function(){ ... });
+});
+
+
+/*
 function storeData()
 {
     event.preventDefault();
@@ -198,17 +228,4 @@ function validation()
      
     return true;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+*/
