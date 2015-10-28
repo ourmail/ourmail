@@ -17,14 +17,12 @@ $(function() {
 				console.log("signup good");
 			},
 			error: function(newUser, error) {
-				console.log("signuperror:"+error.message);
 				alert("Parse Error(" + error.code + "): " + error.message);
 			}
 		});
 	});
 
-
-// NO CODE PASS THIS POINT
+// NO CODE BEYOND THIS POINT
 // ADD CODE IN $(function(){ ... });
 });
 

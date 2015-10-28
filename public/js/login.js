@@ -27,38 +27,24 @@ $(function() {
 	})
 	
 	// ****************** L O G I N *************************
-	$("#login").submit(function(event) {
+	$("#login").submit(function(event){
 		event.preventDefault(); //prevent browser to refress and erase the js after the submit is pressed
 		
-		var user = new Parse.User();
-		user.set("username", $("#loginUsername").val());
-		user.set("password", $("#loginPassword").val());
-		user.logIn({
-			success: function(user) { //on success, user object is pass back to me
-				location.reload();
-				//window.location.href = '.html'; // go to main page
-			},
-			error: function(user, error) {
-				console.log("login error:"+error.message);
-				alert("Error: " + error.code + " " + error.message);
-			}
-		});
-	});
-	
-	// ******************** S I G U P ************************
-	$("#signup").submit(function(event){
-		event.preventDefault();
+		var username=$("#login-username").val();
+		var password=$("#login-password").val();
 		
-		var newUser = new Parse.User();
-		newUser.set("username", $("#signupUsername").val());
-		newUser.set("password", $("#signupPassword").val());
-		newUser.set("email", $("#signupEmail").val());
-		user.signUp({
-			success: function(user) {
+		Parse.User.logIn(username, password, {
+			success: function(user) { //on success, user object is pass back to me
+				console.log("login success.");
+				$.post('login.php', {'authentication' : true}, function(data) {
+					if(data.success == true) {
+						location.reload(true);
+					}					
+				}, 'json');
 				displayCurrentUser();
 			},
 			error: function(user, error) {
-				console.log("signuperror:"+error.message);
+				alert("Parse error(" + error.code + "): " + error.message);
 			}
 		});
 	});
