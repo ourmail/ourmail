@@ -33,22 +33,22 @@ if(isset($_SESSION['userauth'])) {
 		<div class = "row">
 				<div class="Logo" >
 					<h3 id = "sidetext">The power of email all in a single account.</h3>
-					 <div class="col-xs-12 col-md-6">
+					 <div class="col-xs-12 col-md-3">
 					    <a href="" class="thumbnail">
 					      <img src="img/signuplogos/gmail.png" alt="...">
 					    </a>
 					 </div>
-					 <div class="col-xs-12 col-md-6">
+					 <div class="col-xs-12 col-md-3">
 					    <a href="" class="thumbnail">
 					      <img src="img/signuplogos/gmail.png" alt="...">
 					    </a>
 					 </div>
-					 <div class="col-xs-12 col-md-6">
+					 <div class="col-xs-12 col-md-3">
 					    <a href="" class="thumbnail">
 					      <img src="img/signuplogos/gmail.png" alt="...">
 					    </a>
 					 </div>
-					 <div class="col-xs-12 col-md-6">
+					 <div class="col-xs-12 col-md-3">
 					    <a href="" class="thumbnail">
 					      <img src="img/signuplogos/gmail.png" alt="...">
 					    </a>
