@@ -3,8 +3,8 @@
 require_once './class.contextio.php';
 
 //define your API key and secret - find this https://console.context.io/#settings
-define('CONSUMER_KEY', '7yo7pcfm');
-define('CONSUMER_SECRET', 'aub4jk9WF9zL1OL2');
+define('CONSUMER_KEY', 'ru1j2q2s');
+define('CONSUMER_SECRET', '0OuLf0mllrvwaPAQ');
 
 // instantiate the contextio object
 $contextio = new ContextIO(CONSUMER_KEY, CONSUMER_SECRET);
