@@ -1,8 +1,8 @@
 $(function() {
 "use strict";
 	Parse.$ = jQuery;
+	Parse.initialize("9syVLvZdcJKZD9uAlCoYMKwjtmWxPHFhD4DdYKcN", "HH4p0QrjdzsO74KsoLhhhUZnPYDwExnZ8o9CCAeN"); 
 
-	Parse.initialize("21WjmmvR9bBPQi7sFjFVECL0tO1kETVsqtgHbJOA", "FeX6bK9Utc0fuBt9KpBqSzgFOskmHgHS04f2k6mC");
 	var Post = Parse.Object.extend("Post");
 
 	// ************ C U R R E N T   U S E R *******************
@@ -27,24 +27,23 @@ $(function() {
 	})
 	
 	// ****************** L O G I N *************************
-	$("#login").submit(function(event){
-		event.preventDefault(); //prevent browser to refress and erase the js after the submit is pressed
-		
-		var username=$("#login-username").val();
-		var password=$("#login-password").val();
-		
-		Parse.User.logIn(username, password, {
+	
+	$("#login").submit(function(event) {
+		var user = new Parse.User();
+		user.set("username", $("#loginUsername").val());
+		user.set("password", $("#loginPassword").val());
+		user.logIn({
 			success: function(user) { //on success, user object is pass back to me
-				console.log("login success.");
+				console.log("login success."); 
 				$.post('login.php', {'authentication' : true}, function(data) {
 					if(data.success == true) {
-						location.reload(true);
-					}					
+						window.location.href = 'main.php'; // go to main page
+					}
 				}, 'json');
-				displayCurrentUser();
 			},
 			error: function(user, error) {
-				alert("Parse error(" + error.code + "): " + error.message);
+				console.log("Parse login error:" + error.message);
+				alert("Parse Error (" + error.code + "): " + error.message);
 			}
 		});
 	});

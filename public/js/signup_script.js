@@ -3,6 +3,21 @@ $(function() {
 	"use strict"
 	Parse.$ = jQuery;
 	Parse.initialize("9syVLvZdcJKZD9uAlCoYMKwjtmWxPHFhD4DdYKcN", "HH4p0QrjdzsO74KsoLhhhUZnPYDwExnZ8o9CCAeN"); 
+
+	// ************ C U R R E N T   U S E R *******************
+	function displayCurrentUser() {
+		if (Parse.User.current()) {
+			console.log("Logged in by "+Parse.User.current().get("username"));
+			$("#current-user").html("Current User is "+Parse.User.current().get("username"));
+		}
+		else {
+			console.log("Logged in by no one.");
+			$("#current-user").html("Current User is no one.");
+		}
+	}
+	
+	displayCurrentUser();
+
 	// ******************** S I G U P ************************
 	$("#signup").submit(function(event){
 		event.preventDefault();
@@ -14,7 +29,9 @@ $(function() {
 		newUser.set("email", $("#signupEmail").val());
 		newUser.signUp(null, {
 			success: function(newUser) {
-				console.log("signup good");
+				Parse.User.logOut();
+				console.log("signup success.");
+				window.location.href = 'index.php'; // go to index page for login
 			},
 			error: function(newUser, error) {
 				alert("Parse Error(" + error.code + "): " + error.message);
