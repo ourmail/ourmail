@@ -1,4 +1,4 @@
-<?
+<?php
 //include context.io library
 require_once 'PHP-Lite-ContextIO/class.contextio.php';
 
@@ -11,7 +11,7 @@ $ctxio = new ContextIO(CONSUMER_KEY, CONSUMER_SECRET);
 
 //Get a connect token
 $r=$ctxio->addConnectToken(array(
-    "callback_url" =>  "localhost/dashboard.php"
+    "callback_url" =>  "http://hundal.koding.io/dashboard.php"
 ));
 
 if ($r === false) {

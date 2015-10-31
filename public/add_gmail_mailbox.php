@@ -1,4 +1,4 @@
-<?
+<?php
 //include context.io library
 require_once 'PHP-Lite-ContextIO/class.contextio.php';
 

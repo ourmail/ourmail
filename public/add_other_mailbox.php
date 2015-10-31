@@ -1,4 +1,4 @@
-<?
+<?php
 //include context.io library
 require_once 'PHP-Lite-ContextIO/class.contextio.php';
 
@@ -9,9 +9,10 @@ define('CONSUMER_SECRET', '0OuLf0mllrvwaPAQ');
 //Instantiate the contextio object
 $ctxio = new ContextIO(CONSUMER_KEY, CONSUMER_SECRET);
 
+/*
 //Get a connect token
 $r=$ctxio->addConnectToken(array(
-    "callback_url" =>  "localhost/dashboard.php"
+    "callback_url" =>  "www.google.com"
 ));
 
 if ($r === false) {
@@ -24,5 +25,5 @@ else{
     $_SESSION['ContextIO-connectToken']=$token['token'];
     header("Location: ". $token['browser_redirect_url']);
 }
-
+*/
 ?>
