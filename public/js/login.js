@@ -57,6 +57,20 @@ $(function() {
 			//change username and password
 			currentUser.set("username", $("#newUsername").val());
 			currentUser.set("email", $("#newEmail").val());
+			var ImapData = Parse.Object.extend("imapData");
+			var imapData = new ImapData();
+			imapData.set("email", {gmail : "jgoul004@ucr.edu"});
+			imapData.set("password", {gmail : "haha"});
+			/*imapData.save(null, {
+				success: function(data) {
+					alert("success");
+				},
+				error: function(data, error) {
+					alert(error.message);
+				}
+			});*/	
+			
+			currentUser.set("imapData", imapData);
 			currentUser.save({
 				success: function(user) {
 					displayCurrentUser();

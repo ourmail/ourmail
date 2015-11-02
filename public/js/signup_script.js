@@ -39,8 +39,6 @@ $(function() {
 		});
 	});
 
-    Parse.newUser.logOut();
-
 // NO CODE BEYOND THIS POINT
 // ADD CODE IN $(function(){ ... });
 });

@@ -1,0 +1,104 @@
+#header 
+{
+	background-color: DeepSkyBlue;
+	font-family: "Cabin", Arial;
+	text-align: center;
+	padding: 10px;
+	border-radius: 10px;
+	font-size: 25px;
+}
+
+#sidetext
+{
+	font-family: "Cabin", Arial;
+	font-size: 35px;
+	height: 100px;
+	position:relative;
+	left:15%;
+	
+}
+
+#ioslogo
+{
+	position: relative;
+	top: 40px;
+	width: 500px;
+	height: 300px;
+    right: 20px;
+}
+
+#gmaillogo
+{
+	position: relative;
+	top: 10px;
+	width: 230px;
+	height: 230px;
+	right: 30px;
+}
+
+#yahoologo
+{
+	position: relative;
+	width: 270px;
+	height: 180px;
+	right: 660px;
+	top: 270px;
+}
+
+#outlooklogo
+{
+	position: relative;
+	height: 200px;
+	width: 350px;
+	left: 440px;
+	top: 30px;
+}
+
+form
+{
+	float: right;
+	margin-right: 2cm;
+	font-family: 'Cabin', Arial;
+	font-size: 20px;
+	background-color: #E0E0E0;
+	padding: 25px 25px 25px 25px;
+	border-radius: 10px;
+}
+
+.name
+{
+	width: 160px;
+	height: 25px;
+}
+
+.samebox
+{
+	width: 200px;
+	height: 25px;	
+}
+
+#dropbox
+{
+	width: 270px;
+	height: 33px;
+}
+
+#submit
+{
+	width: 150px;
+	height: 30px;
+}
+
+.Signup{
+	position: absolute;
+    /* position: relative; */
+    left: 35%;
+}
+
+.error {
+	display: none;
+	color: #CC0000;
+}
+
+
+
