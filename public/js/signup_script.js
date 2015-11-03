@@ -27,6 +27,8 @@ $(function() {
 		newUser.set("username", $("#signupUsername").val());
 		newUser.set("password", $("#signupPassword").val());
 		newUser.set("email", $("#signupEmail").val());
+        newUser.set("security_question", $("#security_question").val());
+        newUser.set("security_answer", $("#security_answer").val());
 		newUser.signUp(null, {
 			success: function(newUser) {
 				Parse.User.logOut();

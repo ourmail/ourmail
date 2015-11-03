@@ -9,25 +9,33 @@ function test()
 
 function send_email_request()
 {
-	var security_ans = document.passwordform.security_answer.value;
+	//var security_ans = document.passwordform.security_answer.value;
 
 	var cur_user = Parse.User.current();
+    console.log(cur_user);
+    console.log(document.getElementsByName("email")[0].value);
 
-	// checking if the security question is right
-	if (security_ans != cur_user.get("securityAnswer"))
+    var u_Email = document.getElementsByName("email")[0].value;
+    var sec_answer = document.getElementsByName("security_answer")[0].value;
+    console.log(sec_answer);
+
+	//checking if the security question is right
+	if (sec_answer != cur_user.get("security_answer"))
 	{
-		alert("Error: Incorrect answer to security question!")
-		document.passwordform.security_answer.focus();
+        alert("Error: Incorrect answer to security question!");
+        document.passwordform.security_answer.focus();
         return false;
 	}
 
-    Parse.User.requestPasswordReset("email@example.com", {
+    Parse.User.requestPasswordReset(u_Email, {
   	success: function() {
-  	// Password reset request was sent successfully
+  	     alert("Password reset instructions were successfully sent to your email address.");
+         return true;
   	},
   	error: function(error) {
     	// Show the error message somewhere
     	alert("Error: " + error.code + " " + error.message);
+        return false;
   	}
 	});
 
@@ -79,12 +87,13 @@ function emailVerify()
 function security_check()
 {
 	// calling empty field checker
-    if (checkEmptyFields() == false)
-        return false;
+    //if (checkEmptyFields() == false)
+      //  return false;
 
-    if (emailVerify() == false)
-        return false;
+    //if (emailVerify() == false)
+      //  return false;
 
+    //test();
     send_email_request();
 
     return true;
