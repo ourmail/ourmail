@@ -1,7 +1,106 @@
 <?php
 
-// Include the ui functions file
-require 'uifunctions.php';
+// Helper Functions
+
+//This function prints a folder to the side navbar
+function print_folder($folder,$label){
+    $output="<li>\n<a href=\"dashboard.php?label=" . rawurlencode($label) . "&folder=" .rawurlencode($folder) . "\">" .$folder . "</a>\n</li>\n";
+    echo $output;
+}
+
+//This function prints a mailbox to the side navbar. It call print_folder to print folders contained in a mailbox.
+function print_mailbox($account){
+    $label=$account['label'];
+    $username=$account['username'];
+
+    echo "<li>\n<a>" .$username ."</a>\n<ul class=\"sidebar-brand\">\n";
+    foreach($account['folders'] as $folder){
+        print_folder($folder,$label);
+    }       
+    echo "</ul>\n</li>\n";
+}
+
+//This function prints all mailboxes
+function print_all_mailboxes($accounts){
+    foreach($accounts as $account){
+        print_mailbox($account);
+    }
+}
+
+// This function takes in a message object and prints it to the screen
+function print_message($message){
+
+$senderName=$message['addresses']['sender']['0']['name'];
+$subject=$message['subject'];
+$sendTimeSeconds=$message['sent_at'];
+$sendDate=date('Y/m/d H:i:s', $sendTimeSeconds);
+
+$message_html = <<<EOT
+                        <table border="0" cellspacing="0" cellpadding="0" align="left" style="width:100%;margin:0 auto;background:#FFF;">
+                            <tr>
+                                <td colspan="5" style="padding:15px 0;">
+                                    <h1 style="color:#000;font-size:24px;padding:0 15px;margin:0;">{$senderName}</h1>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:15px;">&nbsp;</td>
+                                <td style="width:375px;">
+                                    {$subject}
+                                </td>
+                                <td style="width:15px;">&nbsp;</td>
+                                <td style="width:180px;padding:0 0 0 0;">
+                                    {$sendDate}
+                                </td>
+                                <td style="width:15px;">&nbsp;</td>
+                            </tr>
+                        </table>
+EOT;
+
+echo $message_html;
+}
+
+// This function takes list of message objects and prints them all
+function print_all_messages($msgsd){
+    foreach($msgsd as $msg){
+        print_message($msg);
+    }
+}
+
+// This function fetches messages and prints them all.
+function get_messages_and_print($label,$folder){
+
+    global $ctxio;
+    global $imapinfo;
+
+    // Get Messages
+    $msgs=$ctxio->listMessages($imapinfo['id'],array(
+        'label' => $label,
+        'folder' => $folder,
+    ));
+    if ($msgs === false) {
+        throw new exception("Unable to fetch messages");
+    }
+
+    // Get messages Data
+    $msgsd=$msgs->getData();
+    print_all_messages($msgsd);
+}
+
+// This function fetches the new mailbox based on whats folder is selected by the user.
+function refresh_mailbox(){
+    global $imapinfo;
+// FIXME. Do error checking for wrong variables passed.
+    if (array_key_exists('label',$_GET) and array_key_exists('folder',$_GET)){
+        $label=$_GET['label'];
+        $folder=$_GET['folder'];
+    } else {
+        $label=$imapinfo['accounts']['0']['label'];
+        $folder=$imapinfo['accounts']['0']['folders']['0'];
+    }
+    get_messages_and_print($label,$folder);
+}
+
+// Helper Functions end
 
 // Include Context IO Library
 require_once 'PHP-Lite-ContextIO/class.contextio.php';
@@ -22,22 +121,15 @@ $ctxio = new ContextIO(CONSUMER_KEY, CONSUMER_SECRET);
 $mem = new Memcached();
 $mem->addServer("127.0.0.1", 11211);
 
-// Start Timer
-//$start = microtime(true);
-
 // Get cached imapinfo
-$imapinfo = $mem->get("imapinfo");
+$imapinfo = $mem->get(USER_EMAIL);
 if ($imapinfo) {
     //echo "found cached version";
 } else {
-    //echo "No matching key found.  I'll add that now!";
-    buildImapInfo($imapinfo, $ctxio);
-    $mem->set('imapinfo',$imapinfo) or die ("Unable to store data in memcached.");
+    //echo "No matching key found.  Exiting.";
+    header("Location: update_imap_info.php");
+    die();
 }
-
-// TIme taken to get imap info
-// $time_elapsed_secs = microtime(true) - $start;
-// print ("<br />Total Time taken to get imapinfo is: " . $time_elapsed_secs . "<br />");
 ?>
 
 <!DOCTYPE html>
