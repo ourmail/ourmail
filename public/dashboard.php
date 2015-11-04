@@ -10,7 +10,7 @@ require_once 'PHP-Lite-ContextIO/class.contextio.php';
 define('CONSUMER_KEY', 'ru1j2q2s');
 define('CONSUMER_SECRET', '0OuLf0mllrvwaPAQ');
 define('USER_EMAIL', 'ourmailorg@gmail.com');
-define('DEBUG', False)
+define('DEBUG', False);
 
 //Instantiate the contextio object
 $ctxio = new ContextIO(CONSUMER_KEY, CONSUMER_SECRET);
@@ -29,7 +29,7 @@ else{
 //Users Context IO ID
 $usr_id=$lud['id'];
 
-if ($debug){
+if (DEBUG){
     print "<br />id: ";
     print  $usr_id;
     print "<br />";
@@ -40,7 +40,7 @@ foreach($mail_accounts as $maccount){
 
     //Get Current Account Label
 	$label=$maccount['label'];
-    if ($debug){
+    if (DEBUG){
         print "<br />Label: ";
         print $label;
 	    print "<br />";
@@ -60,28 +60,55 @@ foreach($mail_accounts as $maccount){
 
             $folder=$folderdata['name'];
 
-            if ($debug){
+            if (DEBUG){
 	            print "<br />";
                 print($folder);
                 print "<br />";
             }
 
             // Get Messages
-            $msg=$ctxio->listMessages($usr_id,array(
+            $msgs=$ctxio->listMessages($usr_id,array(
                 'label' => $label,
                 'folder' => $folder,
             ));
 
             //Error cehcking for messages
-            if ($msg === false) {
+            if ($msgs === false) {
                 throw new exception("Unable to fetch messages");
             } else {
 
-                // Get messages
-                $msgd=$msg->getData();
-                print "<br />";
-                print_r($msgd);
-                print "<br />";
+                // Get messages Data
+                $msgsd=$msgs->getData();
+
+                if (DEBUG){
+                    print "<br />";
+                    print_r($msgd);
+                    print "<br />";
+                }
+
+                foreach($msgsd as $msg){
+
+                    // Extract messsage id from message
+                    $msgid=$msg['message_id'];
+
+                    // Get actual message with the help of the message id
+                    $message=$ctxio->getMessageBody($usr_id,array(
+                    'label' => $label,
+                    'folder' => $folder,
+                    'message_id' => $msgid,
+                    //'body_type' => "text/html",
+                    ));
+
+                    //Error checking for received message
+                    if ($message === false) {
+                        throw new exception("Unable to fetch messages");
+                    } else {
+                        // Get messages Data
+                        $message_data=$message->getData();
+                        print ("<br />Subject: " . $msg['subject']);
+                        print ("<br /> Body is : <br />" . $message_data['bodies']['1']['content'] );
+                    }
+                }
             }
 		}
 	}
