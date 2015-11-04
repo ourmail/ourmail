@@ -1,12 +1,39 @@
 <?php
 
+//Helper Functions
+
+//This function prints a folder to the side navbar
+function print_folder($folder,$label){
+    $output="<li>\n<a href=\"dashboard.php?label=" . rawurlencode($label) . "&folder=" .rawurlencode($folder) . "\">" .$folder . "</a>\n</li>\n";
+    echo $output;
+}
+
+//This function prints a mailbox to the side navbar. It call print_folder to print folders contained in a mailbox.
+function print_mailbox($account_arr){
+    $label=$account_arr['label'];
+
+    echo "<li>\n<a>" .$label ."</a>\n<ul class=\"sidebar-brand\">\n";
+    foreach($account_arr['folders'] as $folder){
+        print_folder($folder,$label);
+    }       
+    echo "</ul>\n</li>\n";
+}
+
+//This function prints all mailboxes
+function print_all_mailboxes($accounts){
+    foreach($accounts as $account){
+        print_mailbox($account);
+    }
+}
+
+//This function builds the imapinfo_object, which contains information about the users email accounts.
 function buildImapInfo(&$imapinfo, &$ctxio){
 
     $lu=$ctxio->listUsers(array(
         'email' => USER_EMAIL
     ));
     if ($lu === false) {
-        throw new exception("Unable to get a connect token.");
+        throw new exception("Unable to get the user.");
     }
 
     $lud = $lu->getData()[0];
@@ -24,7 +51,7 @@ function buildImapInfo(&$imapinfo, &$ctxio){
 
         //Get Current Account Label
         $label=$maccount['label'];
-        
+
         //Store label
         $account['label']=$label;
         $account['folders']=array();
@@ -60,6 +87,7 @@ require_once 'PHP-Lite-ContextIO/class.contextio.php';
 define('CONSUMER_KEY', 'ru1j2q2s');
 define('CONSUMER_SECRET', '0OuLf0mllrvwaPAQ');
 define('USER_EMAIL', 'ourmailorg@gmail.com');
+define('HOST', '192.168.33.10');
 define('DEBUG', False);
 
 // Get all the information regarding mailboxes from the contextio.
@@ -74,10 +102,13 @@ $ctxio = new ContextIO(CONSUMER_KEY, CONSUMER_SECRET);
 
 //$start = microtime(true);
 
+print "Get is: ";
 var_dump($_GET);
+print "<br /><br />";
 
-/*
+
 buildImapInfo($imapinfo, $ctxio);
+
 
 //$time_elapsed_secs = microtime(true) - $start;
 //print ("<br />Total Time taken is: " . $time_elapsed_secs);
@@ -222,31 +253,14 @@ buildImapInfo($imapinfo, $ctxio);
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
-                        
+                    <a href="/dashboard.php">
+                        Dashboard
                     </a>
                 </li>
-                <li>
-                    <a href="#">Dashboard</a>
-                </li>
-                <li>
-                    <a href="#">Shortcuts</a>
-                </li>
-                <li>
-                    <a href="#">Overview</a>
-                </li>
-                <li>
-                    <a href="#">Events</a>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
+
+<?php
+print_all_mailboxes($imapinfo['accounts']);
+?>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -256,10 +270,32 @@ buildImapInfo($imapinfo, $ctxio);
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1>Simple Sidebar</h1>
-                        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+
+<?php
+
+$current_label=$imapinfo['accounts']['0']['label'];
+$current_folder=$imapinfo['accounts']['0']['folders']['0'];
+print "<br />" . $current_label . "<br />";
+print "<br />" . $current_folder . "<br />";
+
+// Get Messages
+$msgs=$ctxio->listMessages($imapinfo['id'],array(
+    'label' => $current_label,
+    'folder' => $current_folder,
+));
+if ($msgs === false) {
+    throw new exception("Unable to fetch messages");
+}
+
+// Get messages Data
+$msgsd=$msgs->getData();
+
+foreach($msgsd as $msg){
+    var_dump($msg);
+    // Extract messsage id from message
+    // $msgid=$msg['message_id'];
+}
+?>
                     </div>
                 </div>
             </div>
@@ -286,3 +322,28 @@ $("#menu-toggle").click(function(e) {
 </body>
 
 </html>
+
+<?php
+/* This code might be used later
+ *
+ // Get actual message with the help of the message id
+ $message=$ctxio->getMessageBody($usr_id,array(
+     'label' => $label,
+     'folder' => $folder,
+     'message_id' => $msgid,
+     //'body_type' => "text/html",
+ ));
+
+//Error checking for received message
+if ($message === false) {
+    throw new exception("Unable to fetch messages");
+                        } else {
+                            // Get messages Data
+                            $message_data=$message->getData();
+                            if (DEBUG){
+                                print ("<br />Subject: " . $msg['subject']);
+                                print ("<br /> Body is : <br />" . $message_data['bodies']['1']['content'] );
+                            }
+                        }
+ */
+?>
