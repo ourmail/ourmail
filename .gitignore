@@ -3,3 +3,5 @@
 *.swp
 public/examples.php
 public/practice.html
+public/info.php
+public/cache_test.php

@@ -92,26 +92,35 @@ define('DEBUG', False);
 
 // Get all the information regarding mailboxes from the contextio.
 
-$imapinfo=array(
-    'useremail' => USER_EMAIL
-);
-
 //Instantiate the contextio object
 $ctxio = new ContextIO(CONSUMER_KEY, CONSUMER_SECRET);
-
-
-//$start = microtime(true);
 
 print "Get is: ";
 var_dump($_GET);
 print "<br /><br />";
 
+// Start memcached server
+$mem = new Memcached();
+$mem->addServer("127.0.0.1", 11211);
 
-buildImapInfo($imapinfo, $ctxio);
+// Start Timer
+$start = microtime(true);
 
+// Get cached imapinfo
+$imapinfo = $mem->get("imapinfo");
+if ($imapinfo) {
+    //echo "found cached version";
+    var_dump($imapinfo);
+} else {
+    //echo "No matching key found.  I'll add that now!";
+    buildImapInfo($imapinfo, $ctxio);
+    $mem->set('imapinfo',$imapinfo) or die ("Unable to store data in memcached.");
+}
 
-//$time_elapsed_secs = microtime(true) - $start;
-//print ("<br />Total Time taken is: " . $time_elapsed_secs);
+// TIme taken to get imap info
+$time_elapsed_secs = microtime(true) - $start;
+print ("<br />Total Time taken is: " . $time_elapsed_secs . "<br />");
+
     /*
     $lu=$ctxio->listUsers(array(
         'email' => USER_EMAIL
@@ -214,7 +223,7 @@ buildImapInfo($imapinfo, $ctxio);
         }
     }
 
-     */
+    FIXME
 ?>
 
 <!DOCTYPE html>
