@@ -63,6 +63,13 @@ if(isset($_SESSION['userauth'])) {
 			<input type="text" id="signupUsername" placeholder="Username" class="form-control">
 			<input type="password" id="signupPassword" placeholder="Password" class="form-control">
 			<input type="text" id="signupEmail" placeholder="Email" class="form-control">
+			<select id = "security_question">
+				<option value = "number_1"> What was your mother's maiden name?</option>
+			    <option value= "number_2" >What was your childhood nickname?</option>
+			    <option value= "number_3" >What school did you attend in 6th grade?</option>
+			    <option value= "number_4" >What was the model of your first car?</option>
+			</select>
+			<input type = "text" id = "security_answer">
 			<input type="submit" id="signupSubmit">
 		</form>
 		<!-- ************************************************************************************** -->
