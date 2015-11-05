@@ -43,6 +43,10 @@ else {
 		Email: <?=$email;?><br>
 		</div>
 		<a href="account_settings.php"><button id="account_settings">Account Settings</button></a>
+		
+		<a href="add_mailbox_ct.php"><button id="email_setup">Setup Email Account</button></a>
+		
+		<a href="dashboard.php"><button id="email_dashboard">Email Dashboard</button></a>
 	
 		<button id="logout">Log Out</button>
 	</div>

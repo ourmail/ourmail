@@ -62,10 +62,10 @@ $(function() {
 			//change username and password
 			currentUser.set("username", $("#newUsername").val());
 			currentUser.set("email", $("#newEmail").val());
-			var ImapData = Parse.Object.extend("imapData");
-			var imapData = new ImapData();
-			imapData.set("email", {gmail : "jgoul004@ucr.edu"});
-			imapData.set("password", {gmail : "haha"});
+			//var ImapData = Parse.Object.extend("imapData");
+			//var imapData = new ImapData();
+			//imapData.set("email", {gmail : "jgoul004@ucr.edu"});
+			//imapData.set("password", {gmail : "haha"});
 			/*imapData.save(null, {
 				success: function(data) {
 					alert("success");
@@ -75,10 +75,23 @@ $(function() {
 				}
 			});*/	
 			
-			currentUser.set("imapData", imapData);
+			//currentUser.set("imapData", imapData);
 			currentUser.save({
 				success: function(user) {
 					displayCurrentUser();
+					$.post('session_update.php', {'email' : user.get('email'), 
+										'username' : user.get('username'), 
+										'firstname' : user.get('firstName'), 
+										'lastname' : user.get('lastName')
+										}, function(data) {
+						//alert(data);
+						if(data.success == true) {
+							window.location.href = 'main.php'; // go to main page
+						}
+						else {
+							console.log('Error in session_update.php');
+						}
+					}, 'json');
 				},
 				error: function(user, error) {
 					alert("Error: " + error.code + " " + error.message);

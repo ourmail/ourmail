@@ -1,3 +1,12 @@
+<?
+session_start();
+session_regenerate_id();
+
+if(!isset($_SESSION['userauth'])) {
+	header("Location: index.php");
+}
+?>
+
 <!DOCTYPE html>
 <html>
 

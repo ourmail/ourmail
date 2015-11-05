@@ -30,6 +30,7 @@ function send_email_request()
     Parse.User.requestPasswordReset(u_Email, {
   	success: function() {
   	     alert("Password reset instructions were successfully sent to your email address.");
+		 window.location.href = "main.php";
          return true;
   	},
   	error: function(error) {
