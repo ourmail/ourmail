@@ -1,3 +1,13 @@
+<?
+if(isset($_POST['email'])) {
+    $useremail = $_POST['email'];
+    echo $useremail;
+}
+else{
+    echo "Why you no work?";
+}
+?>
+
 <?php
 
 // Helper Functions
@@ -200,6 +210,9 @@ refresh_mailbox();
     </div>
     <!-- /#wrapper -->
 
+    <!-- Parse Script -->
+    <script src = "http://www.parsecdn.com/js/parse-latest.js"></script>
+
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
@@ -213,5 +226,8 @@ $("#menu-toggle").click(function(e) {
     $("#wrapper").toggleClass("toggled");
 });
 </script>
+    
+    <!-- Dashboard Script -->
+    <script src="js/dashboard.js"></script>
 </body>
 </html>
