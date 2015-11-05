@@ -35,7 +35,12 @@ $(function() {
 		user.logIn({
 			success: function(user) { //on success, user object is pass back to me
 				console.log("login success."); 
-				$.post('login.php', {'authentication' : true}, function(data) {
+				$.post('login.php', {'authentication' : true, 
+									'email' : user.get('email'), 
+									'username' : user.get('username'), 
+									'firstname' : user.get('firstName'), 
+									'lastname' : user.get('lastName')
+									}, function(data) {
 					if(data.success == true) {
 						window.location.href = 'main.php'; // go to main page
 					}

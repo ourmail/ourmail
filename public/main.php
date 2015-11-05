@@ -2,8 +2,19 @@
 session_start();
 session_regenerate_id();
 
+$firstname = 'unknown';
+$lastname = 'unknown';
+$email = 'unknown';
+$username = 'unknown';
+
 if(!isset($_SESSION['userauth'])) {
 	header("Location: index.php");
+}
+else {
+	$firstname = $_SESSION['firstname'];
+	$lastname = $_SESSION['lastname'];
+	$username = $_SESSION['username'];
+	$email = $_SESSION['email'];
 }
 ?>
 <!DOCTYPE HTML>
@@ -25,7 +36,13 @@ if(!isset($_SESSION['userauth'])) {
 </head>
 <body>
 	<div>
-	<a href="account_settings.php"><button id="account_settings">Account Settings</button></a>
+		<div>
+		First Name: <?=$firstname;?><br>
+		Last Name: <?=$lastname;?><br>
+		Username: <?=$username;?><br>
+		Email: <?=$email;?><br>
+		</div>
+		<a href="account_settings.php"><button id="account_settings">Account Settings</button></a>
 	
 		<button id="logout">Log Out</button>
 	</div>
