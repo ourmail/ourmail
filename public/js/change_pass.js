@@ -88,11 +88,11 @@ function emailVerify()
 function security_check()
 {
 	// calling empty field checker
-    //if (checkEmptyFields() == false)
-      //  return false;
+    if (checkEmptyFields() == false)
+        return false;
 
-    //if (emailVerify() == false)
-      //  return false;
+    if (emailVerify() == false)
+        return false;
 
     //test();
     send_email_request();
