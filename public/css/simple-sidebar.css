@@ -127,10 +127,16 @@
     color:black;
     margin-top: 5px;
 }
+
 .mailInfo{
     color: black;
     opacity: 0.6;
 }
+
+.sidebar-brand{
+    list-style-type: none;
+}
+
 .label{
 width: 5%;
 }

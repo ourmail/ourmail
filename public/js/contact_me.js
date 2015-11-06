@@ -1,5 +1,5 @@
 $(function() {
-    
+
     $("input,textarea").jqBootstrapValidation({
         preventSubmit: true,
         submitError: function($form, event, errors) {
@@ -28,7 +28,7 @@ $(function() {
                     phone: phone,
                     email: email,
                     message: message
-                },
+                }, 
                 cache: false,
                 success: function() {
                     // Enable button & show success message
