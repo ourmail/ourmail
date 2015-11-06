@@ -1,14 +1,4 @@
-<?
-if(isset($_POST['email'])) {
-    $useremail = $_POST['email'];
-    echo $useremail;
-}
-else{
-    echo "Why you no work?";
-}
-?>
 <?php
-
 // Helper Functions
 
 //This function prints a folder to the side navbar
