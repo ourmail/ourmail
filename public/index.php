@@ -50,6 +50,7 @@ if(isset($_SESSION['userauth'])) {
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
+                        <i class="icon-ok"></i>
                         <a href="#portfolio">Portfolio</a>
                     </li>
                     <li class="page-scroll">

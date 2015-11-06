@@ -7,7 +7,6 @@ else{
     echo "Why you no work?";
 }
 ?>
-
 <?php
 
 // Helper Functions
@@ -99,6 +98,7 @@ function get_messages_and_print($label,$folder){
 // This function fetches the new mailbox based on whats folder is selected by the user.
 function refresh_mailbox(){
     global $imapinfo;
+    var_dump($imapinfo);
 // FIXME. Do error checking for wrong variables passed.
     if (array_key_exists('label',$_GET) and array_key_exists('folder',$_GET)){
         $label=$_GET['label'];
@@ -161,6 +161,11 @@ if ($imapinfo) {
     <!-- Custom CSS -->
     <link href="css/simple-sidebar.css" rel="stylesheet">
 
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -171,7 +176,6 @@ if ($imapinfo) {
 </head>
 
 <body>
-
     <div id="wrapper">
 
         <!-- Sidebar -->
@@ -182,7 +186,6 @@ if ($imapinfo) {
                         Dashboard
                     </a>
                 </li>
-
 <?php
 // Print all mailboxes on the left side.
 print_all_mailboxes($imapinfo['accounts']);
@@ -193,9 +196,147 @@ print_all_mailboxes($imapinfo['accounts']);
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
+            <div class="header">
+                <div class="searchMail">
+                    <input type="text" class="form-control" placeholder="Text input">
+                </div>
+                <div class="navbar">
+                <nav>
+                  <ul class="pagination">
+                    <li>
+                      <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                      </a>
+                    </li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li>
+                      <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+                <nav class="navbar navbar-default">
+                  <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </button>
+                      <a class="navbar-brand" href="#">All email</a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                      <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Yahoo <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">Gmail</a></li>
+                        <li><a href="#">Outlook</a></li>
+                        <li><a href="#">Hotmail</a></li>
+                      </ul>
+                      <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                          <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                      </form>
+                      <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Link</a></li>
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div><!-- /.navbar-collapse -->
+                  </div><!-- /.container-fluid -->
+                </nav>
+                </div>
+            </div>
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
+                    <div class="mailInfo">
+                       <table>
+                           <tr>
+                               <td class="label "><i class="fa fa-check-square-o fa-2x"></i></td>
+                               <td class="sender">Roger Lau</td>
+                               <td class="mailCont">Reminder: You have been selected for the eBay Search Survery - Remember you have </td>
+                               <td class="data">11/5/2015</td>
+                           </tr>
+                           <tr>
+                               <td class="label "><i class="fa fa-check-square-o fa-2x"></i></td>
+                               <td class="sender">Roger Lau</td>
+                               <td class="mailCont">Reminder: You have been selected for the eBay Search Survery - Remember you have </td>
+                               <td class="data">11/5/2015</td>
+                           </tr>
+                           <tr>
+                               <td class="label "><i class="fa fa-check-square-o fa-2x"></i></td>
+                               <td class="sender">Roger Lau</td>
+                               <td class="mailCont">Reminder: You have been selected for the eBay Search Survery - Remember you have </td>
+                               <td class="data">11/5/2015</td>
+                           </tr>
+                           <tr>
+                               <td class="label "><i class="fa fa-check-square-o fa-2x"></i></td>
+                               <td class="sender">Roger Lau</td>
+                               <td class="mailCont">Reminder: You have been selected for the eBay Search Survery - Remember you have </td>
+                               <td class="data">11/5/2015</td>
+                           </tr>
+                           <tr>
+                               <td class="label "><i class="fa fa-check-square-o fa-2x"></i></td>
+                               <td class="sender">Roger Lau</td>
+                               <td class="mailCont">Reminder: You have been selected for the eBay Search Survery - Remember you have </td>
+                               <td class="data">11/5/2015</td>
+                           </tr>
+                           <tr>
+                               <td class="label "><i class="fa fa-check-square-o fa-2x"></i></td>
+                               <td class="sender">Roger Lau</td>
+                               <td class="mailCont">Reminder: You have been selected for the eBay Search Survery - Remember you have </td>
+                               <td class="data">11/5/2015</td>
+                           </tr>
+                           <tr>
+                               <td class="label "><i class="fa fa-check-square-o fa-2x"></i></td>
+                               <td class="sender">Roger Lau</td>
+                               <td class="mailCont">Reminder: You have been selected for the eBay Search Survery - Remember you have </td>
+                               <td class="data">11/5/2015</td>
+                           </tr>
+                           <tr>
+                               <td class="label "><i class="fa fa-check-square-o fa-2x"></i></td>
+                               <td class="sender">Roger Lau</td>
+                               <td class="mailCont">Reminder: You have been selected for the eBay Search Survery - Remember you have </td>
+                               <td class="data">11/5/2015</td>
+                           </tr>
+                           <tr>
+                               <td class="label "><i class="fa fa-check-square-o fa-2x"></i></td>
+                               <td class="sender">Roger Lau</td>
+                               <td class="mailCont">Reminder: You have been selected for the eBay Search Survery - Remember you have </td>
+                               <td class="data">11/5/2015</td>
+                           </tr>
+                           <tr>
+                               <td class="label "><i class="fa fa-check-square-o fa-2x"></i></td>
+                               <td class="sender">Roger Lau</td>
+                               <td class="mailCont">Reminder: You have been selected for the eBay Search Survery - Remember you have </td>
+                               <td class="data">11/5/2015</td>
+                           </tr>
+                           <tr>
+                               <td class="label "><i class="fa fa-check-square-o fa-2x"></i></td>
+                               <td class="sender">Roger Lau</td>
+                               <td class="mailCont">Reminder: You have been selected for the eBay Search Survery - Remember you have </td>
+                               <td class="data">11/5/2015</td>
+                           </tr>
+                       </table>
+                   </div>   
+                <div class="row"
 
 <?php
 // Print mailbox messages on the right side

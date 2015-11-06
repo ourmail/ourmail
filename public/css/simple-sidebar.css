@@ -123,3 +123,26 @@
         margin-right: 0;
     }
 }
+.mailInfo i{
+    color:black;
+    margin-top: 5px;
+}
+.mailInfo{
+    color: black;
+    opacity: 0.6;
+}
+.label{
+width: 5%;
+}
+
+.sender{
+width: 15%;
+}
+
+.mailcont{
+width: 75%;
+}
+
+.data{
+width:10%;
+}
