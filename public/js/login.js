@@ -44,6 +44,9 @@ $(function() {
 					if(data.success == true) {
 						window.location.href = 'main.php'; // go to main page
 					}
+					else {
+						alert("PHP Session login");
+					}
 				}, 'json');
 			},
 			error: function(user, error) {
